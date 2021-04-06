@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:background="@drawable/flippeddoclistbg"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="359dp"
+        android:layout_height="76dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="বিশেষজ্ঞ তালিকা"
+        android:id="@+id/textView6"
+        android:layout_marginStart="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="60dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/flippeddiseasenamefield"
+        android:gravity="center" />
+    <TextView
+        android:layout_width="359dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="বিশেষজ্ঞ তালিকা"
+        android:id="@+id/current_disease_TextID"
+        android:layout_marginStart="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/flippeddocnamefield"
+        android:gravity="center" />
+
+        <ListView
+        android:id="@+id/doc_list_viewID"
+        android:layout_width="360dp"
+        android:layout_height="410dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginRight="12dp"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/flippeddocnamefield" />
+
+
+</LinearLayout>

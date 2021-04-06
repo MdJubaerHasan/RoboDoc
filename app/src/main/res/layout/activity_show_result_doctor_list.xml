@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowResultDoctorListActivity"
+    android:background="@drawable/resultflippeddoclistbg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/list_for_disease"
+        android:layout_width="359dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bold"
+        android:gravity="center"
+        android:text="Disease Name"
+        android:textColor="@color/white"
+        android:textSize="22sp" />
+
+    <ListView
+        android:id="@+id/list_of_disease_docIDX"
+        android:layout_width="359dp"
+        android:layout_height="540dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

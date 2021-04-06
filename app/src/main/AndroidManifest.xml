@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cerata.robodoc">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Robo Doc"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.RoboDoc">
+        <activity android:name=".ShowResultDoctorListActivity"></activity>
+        <activity android:name=".ShowResultDiseaseListActivity" />
+        <activity android:name=".SelectSymptomsActivity" />
+        <activity android:name=".ShowDiseaseDetailsActivity" />
+        <activity android:name=".ShowDoctorDetailsActivity" />
+        <activity android:name=".ShowDoctorListActivity" />
+        <activity android:name=".MainAppChoiceActivity" />
+        <activity android:name=".ChangeUserPasswordActivity" />
+        <activity android:name=".ChangeUserInfoActivity" />
+        <activity android:name=".UserDashboardActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

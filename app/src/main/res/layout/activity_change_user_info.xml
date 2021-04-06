@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChangeUserInfoActivity"
+    android:layout_gravity="center">
+
+
+    <ImageView
+        android:id="@+id/back_btn3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.039"
+        app:srcCompat="@drawable/backbutton" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:gravity="center|top"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.262">
+
+        <EditText
+            android:id="@+id/change_username"
+            android:layout_width="300dp"
+            android:layout_height="43dp"
+            android:background="@drawable/input_field"
+            android:hint="আপনার ইউজারনেম"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColorHint="@color/dark_blue" />
+
+        <TextView
+            android:id="@+id/change_gender"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="আপনার লিঙ্গ"
+            android:textAlignment="center"
+            android:textColorHint="@color/dark_blue"
+            android:textSize="18dp"/>
+
+        <RadioGroup
+            android:id="@+id/gender_selector"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/input_field">
+            <RadioButton
+                android:id="@+id/rb_male"
+                android:layout_width="80dp"
+                android:layout_height="43dp"
+                android:checked="true"
+                android:text="পুরুষ"
+                android:buttonTint="@color/red"
+                android:textColor="@color/dark_blue"
+                android:textSize="17sp" />
+
+            <RadioButton
+                android:id="@+id/rb_female"
+                android:layout_width="80dp"
+                android:layout_height="43dp"
+                android:buttonTint="@color/red"
+                android:text="মহিলা"
+                android:textColor="@color/dark_blue"
+                android:textSize="17sp" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/change_dob"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_field"
+            android:hint="আপনার জন্ম তারিখ"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColorHint="@color/dark_blue"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/change_location"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_field"
+            android:hint="আপনার অবস্থান"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColorHint="@color/dark_blue"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/change_password"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:background="@drawable/input_field"
+            android:hint="পাসওয়ার্ড পরিবর্তন করুন"
+            android:textAlignment="center"
+            android:textColorHint="@color/dark_blue"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bold"
+        android:text="আপনার সম্পর্কে কিছু কথা"
+        android:textColor="@color/dark_blue"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.069" />
+
+    <EditText
+        android:id="@+id/change_bio"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:background="@drawable/biofield"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <Button
+        android:id="@+id/savePass"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/regular"
+        android:text="সেভ করুন"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_bio"
+        app:layout_constraintVertical_bias="0.175" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

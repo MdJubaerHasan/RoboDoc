@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/regular"
+        android:text="রোবডক এ আপনাকে"
+        android:textColor="@color/paste"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.831"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.051" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bold"
+        android:text="স্বাগতম"
+        android:textColor="@color/dark_blue"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.86"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08" />
+
+    <ImageView
+        android:id="@+id/back_btn2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.068"
+        app:srcCompat="@drawable/backbutton" />
+
+
+    <EditText
+        android:id="@+id/user_name"
+        android:layout_width="300dp"
+        android:layout_height="43dp"
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:hint="আপনার ইউজারনেম"
+        android:textColor="@color/dark_blue"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColorHint="@color/dark_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225" />
+
+
+    <EditText
+        android:id="@+id/type_password"
+        android:layout_width="300dp"
+        android:layout_height="43dp"
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:hint="আপনার পাসওয়ার্ড"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"
+        android:textColorHint="@color/dark_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_name"
+        app:layout_constraintVertical_bias="0.014" />
+
+
+
+    <EditText
+        android:id="@+id/retype_password"
+        android:layout_width="300dp"
+        android:layout_height="43dp"
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:hint="পুনরায় পাসওয়ার্ড"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColorHint="@color/dark_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_password"
+        app:layout_constraintVertical_bias="0.018" />
+
+    <TextView
+        android:id="@+id/cal"
+        android:layout_width="300dp"
+        android:layout_height="43dp"
+        android:background="@drawable/input_field"
+        android:ems="10"
+        android:text="আপনার জন্ম তারিখ"
+        android:textAlignment="center"
+        android:textColor="@color/dark_blue"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/retype_password"
+        app:layout_constraintVertical_bias="0.017" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="140dp"
+        android:layout_height="43dp"
+        android:background="@drawable/input_field"
+        android:hint="আপনার লিঙ্গ"
+        android:textAlignment="center"
+        android:textColorHint="@color/dark_blue"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.214"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cal"
+        app:layout_constraintVertical_bias="0.032" />
+
+    <RadioGroup
+        android:id="@+id/gender_selector"
+        android:layout_width="160dp"
+        android:layout_height="43dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.053"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/cal"
+        app:layout_constraintVertical_bias="0.032">
+
+        <RadioButton
+            android:id="@+id/rb_male"
+            android:layout_width="78dp"
+            android:layout_height="43dp"
+            android:checked="true"
+            android:text="পুরুষ"
+            android:buttonTint="@color/red"
+            android:textColor="@color/dark_blue"
+            android:textSize="17sp" />
+
+        <RadioButton
+            android:id="@+id/rb_female"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="মহিলা"
+            android:buttonTint="@color/red"
+            android:textColor="@color/dark_blue"
+            android:textSize="17sp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/sign_up_btn"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/regular"
+        android:text="নিবন্ধন করুন"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.308" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
