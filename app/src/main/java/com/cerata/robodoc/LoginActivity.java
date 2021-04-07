@@ -16,7 +16,7 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
     ImageView back_button;
     TextView register;
-    EditText u_name, u_pass;
+    EditText u_id, u_pass;
     Button login;
     DBHelperUser myDB;
     @Override
@@ -25,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         back_button = findViewById(R.id.back_btn);
         register = findViewById(R.id.register_btn2);
-        u_name = (EditText) findViewById(R.id.name_user);
+        u_id = (EditText) findViewById(R.id.id_user);
         u_pass = (EditText) findViewById(R.id.password_user);
         login = (Button) findViewById(R.id.login_btn);
         myDB = new DBHelperUser(this);
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = u_name.getText().toString();
+                String id = u_id.getText().toString();
                 String pass = u_pass.getText().toString();
 
 
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("userIdKey", id);
                         editor.putString("passwordKey", pass);
-//                        Toast.makeText(getApplicationContext(), "Saved Successfully", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Saved Successfully", Toast.LENGTH_LONG).show();
                         editor.apply();
 //                        Toast.makeText(getApplicationContext(), "Thank you laa", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getApplicationContext(), UserDashboardActivity.class);

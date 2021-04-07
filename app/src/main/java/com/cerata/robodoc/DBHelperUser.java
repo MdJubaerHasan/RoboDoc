@@ -76,6 +76,13 @@ public class DBHelperUser extends SQLiteOpenHelper {
         database.update(TABLE_NAME,contentValues, ID + " = ?",new String[]{id});
         return true;
     }
+    public boolean updatePassword(String password, String id){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(PASSWORD, password);
+        database.update(TABLE_NAME, contentValues, ID + " = ?",new String[]{id});
+        return true;
+    }
 
 
     public User getSingleUserInfo(String id){

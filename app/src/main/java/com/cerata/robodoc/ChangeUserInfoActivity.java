@@ -47,7 +47,6 @@ public class ChangeUserInfoActivity extends AppCompatActivity {
         save_info = findViewById(R.id.updateUserInfo);
         myDB = new DBHelperUser(this);
         id = getIntent().getStringExtra("user_id");
-        System.out.println(id);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,29 +93,32 @@ public class ChangeUserInfoActivity extends AppCompatActivity {
         });
 
 
-         if (myDB.checkUserID(id)){
-             System.out.println("found user");
-         }
-         save_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int radioId = radioGroup.getCheckedRadioButtonId();
-                radioButton = findViewById(radioId);
-                name = name_input.getText().toString();
-                sex = radioButton.getText().toString();
-                dob = change_dob.getText().toString();
-                bio = bio_input.getText().toString();
-                location = "Dhaka";
-                    boolean res = myDB.updateData(id, name,dob,sex,age,location, bio);
-                    if (res){
-                        Toast.makeText(getApplicationContext(), "Successfully Updated Data ", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), UserDashboardActivity.class);
-                        startActivity(intent);
-                    }else {
-                        Toast.makeText(getApplicationContext(), "Failed to Updated Data ", Toast.LENGTH_LONG).show();
+         if (myDB.checkUserID(id)) {
+             save_info.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                     int radioId = radioGroup.getCheckedRadioButtonId();
+                     radioButton = findViewById(radioId);
+                     name = name_input.getText().toString();
+                     sex = radioButton.getText().toString();
+                     dob = change_dob.getText().toString();
+                     bio = bio_input.getText().toString();
+                     location = "Dhaka";
+                     if (name.equals("")||sex.equals("")||dob.equals("")||location.equals("")){
+                         Toast.makeText(ChangeUserInfoActivity.this, "সবগুলো ঘর পূরণ করুন ",Toast.LENGTH_LONG).show();
+                     }else {
+                         boolean res = myDB.updateData(id, name, dob, sex, age, location, bio);
+                         if (res) {
+                             Toast.makeText(getApplicationContext(), "Successfully Updated Data ", Toast.LENGTH_LONG).show();
+                             Intent intent = new Intent(getApplicationContext(), UserDashboardActivity.class);
+                             startActivity(intent);
+                         } else {
+                             Toast.makeText(getApplicationContext(), "Failed to Updated Data ", Toast.LENGTH_LONG).show();
 
-                }
-            }
-        });
+                         }
+                     }
+                 }
+             });
+         }
     }
 }

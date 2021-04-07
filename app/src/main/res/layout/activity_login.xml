@@ -38,7 +38,7 @@
         app:layout_constraintVertical_bias="0.08" />
 
     <EditText
-        android:id="@+id/name_user"
+        android:id="@+id/id_user"
         android:layout_width="300dp"
         android:layout_height="43dp"
         android:background="@drawable/input_field"
@@ -70,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_user"
+        app:layout_constraintTop_toBottomOf="@+id/id_user"
         app:layout_constraintVertical_bias="0.064" />
 
     <Button

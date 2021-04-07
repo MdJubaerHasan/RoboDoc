@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         SharedPreferences sharedPreferences = getSharedPreferences("user_details", Context.MODE_PRIVATE);
-        if (sharedPreferences.contains("usernameKey") && sharedPreferences.contains("passwordKey")) {
-            String username = sharedPreferences.getString("usernameKey", "");
+        if (sharedPreferences.contains("userIdKey") && sharedPreferences.contains("passwordKey")) {
+            String username = sharedPreferences.getString("userIdKey", "");
             String password = sharedPreferences.getString("passwordKey", "");
             if (username.equals("") || password.equals("")) {
                 Toast.makeText(getApplicationContext(), "can't auto log in", Toast.LENGTH_LONG).show();
