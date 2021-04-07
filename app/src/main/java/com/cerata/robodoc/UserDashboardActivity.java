@@ -46,9 +46,11 @@ public class UserDashboardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        String username = sharedPreferences.getString("usernameKey", "");
-        if (!username.equals("")){
-            User user = myDB.getSingleUserInfo(username);
+        String userId = sharedPreferences.getString("userIdKey", "");
+
+        User user = myDB.getSingleUserInfo(userId);
+        if (!userId.equals("")){
+
             id.setText(String.valueOf(user.getId()));
             name.setText(String.valueOf(user.getName()));
             age.setText(String.valueOf(user.getAge()));
@@ -70,6 +72,7 @@ public class UserDashboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ChangeUserInfoActivity.class);
+                intent.putExtra("user_id", String.valueOf(user.getId()));
                 startActivity(intent);
             }
         });

@@ -2,8 +2,10 @@ package com.cerata.robodoc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -87,8 +89,8 @@ public class RegistrationActivity extends AppCompatActivity {
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = String.valueOf(id_generator());
                 String user = user_name.getText().toString();
+                String id = String.valueOf(id_generator());
                 String pass = user_password.getText().toString();
                 String re_pass = user_re_password.getText().toString();
                 int radioId = radioGroup.getCheckedRadioButtonId();
@@ -100,20 +102,54 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
                 else {
                     if(pass.equals(re_pass)){
-                        Boolean checkUser = myDB.checkUserName(user);
+                        Boolean checkUser = myDB.checkUserID(id);
                         if (!checkUser){
+                            id = id + "@_" + user;
                             Boolean insert = myDB.insertData(id,user, pass, dob, sex, age,"", "" );
                             if (insert){
                                 Toast.makeText(RegistrationActivity.this, "অ্যাকাউন্ট তইরি হয়েছে  ",Toast.LENGTH_LONG).show();
-                                Intent login = new Intent(RegistrationActivity.this, LoginActivity.class);
-                                startActivity(login);
+//                                Intent login = new Intent(RegistrationActivity.this, LoginActivity.class);
+//                                startActivity(login);
+                                AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
+                                builder.setMessage("Your ID is: "+id).setTitle("ID GENERATED").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                        startActivity(intent);
+                                    }
+                                });
+                                AlertDialog dialog = builder.create();
+                                dialog.show();
+
                             }
                             else {
                                 Toast.makeText(RegistrationActivity.this, "রেজিস্ট্রেশান হয়নি",Toast.LENGTH_LONG).show();
                             }
                         }
                         else {
-                            Toast.makeText(RegistrationActivity.this, "এই নাম এ অন্য ইউজার আছেন, আরেকটি নাম পছন্দ করুন",Toast.LENGTH_LONG).show();
+//                            Toast.makeText(RegistrationActivity.this, "এই নাম এ অন্য ইউজার আছেন, আরেকটি নাম পছন্দ করুন",Toast.LENGTH_LONG).show();
+                            while (checkUser){
+                                id = String.valueOf(id_generator());
+                            }
+                            id = id + "@_" + user;
+                            Boolean insert = myDB.insertData(id,user, pass, dob, sex, age,"", "" );
+                            if (insert){
+                                Toast.makeText(RegistrationActivity.this, "অ্যাকাউন্ট তইরি হয়েছে  ",Toast.LENGTH_LONG).show();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
+                                builder.setMessage("Your ID is: "+id).setTitle("ID GENERATED").setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                        startActivity(intent);
+                                    }
+                                });
+                                AlertDialog dialog = builder.create();
+                                dialog.show();
+                            }
+                            else {
+                                Toast.makeText(RegistrationActivity.this, "রেজিস্ট্রেশান হয়নি",Toast.LENGTH_LONG).show();
+                            }
+
                         }
                     }
                     else {

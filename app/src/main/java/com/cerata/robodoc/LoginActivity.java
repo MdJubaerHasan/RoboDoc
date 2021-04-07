@@ -45,19 +45,19 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String user = u_name.getText().toString();
+                String id = u_name.getText().toString();
                 String pass = u_pass.getText().toString();
-                String id = "";
 
-                if(user.equals("")||pass.equals("")){
+
+                if(id.equals("")||pass.equals("")){
                     Toast.makeText(getApplicationContext(), "সবগুলো ঘর পূরণ করুন ",Toast.LENGTH_LONG).show();
                 }
                 else {
-                    Boolean checkUserAndPass = myDB.checkUserNamePassword(user, pass);
+                    Boolean checkUserAndPass = myDB.checkUserIDPassword(id, pass);
                     if (checkUserAndPass){
                         SharedPreferences sharedPreferences = getSharedPreferences("user_details", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("usernameKey", user);
+                        editor.putString("userIdKey", id);
                         editor.putString("passwordKey", pass);
 //                        Toast.makeText(getApplicationContext(), "Saved Successfully", Toast.LENGTH_LONG).show();
                         editor.apply();

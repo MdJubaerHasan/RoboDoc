@@ -25,7 +25,7 @@ public class DBHelperUser extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create Table "+ TABLE_NAME+"("+ID+" INTEGER ,"+NAME+" TEXT PRIMARY KEY, "+PASSWORD+" TEXT, "+DATE_OF_BIRTH+" TEXT,"+GENDER+" TEXT,"+AGE+" INTEGER, "+LOCATION+" TEXT, "+BIO+" VARCHAR(150))");
+        db.execSQL("create Table "+ TABLE_NAME+"("+ID+" TEXT PRIMARY KEY ,"+NAME+" TEXT , "+PASSWORD+" TEXT, "+DATE_OF_BIRTH+" TEXT,"+GENDER+" TEXT,"+AGE+" INTEGER, "+LOCATION+" TEXT, "+BIO+" VARCHAR(150))");
 
     }
 
@@ -48,25 +48,43 @@ public class DBHelperUser extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME, null, contentValues);
         return result != -1;
     }
-    public Boolean checkUserName(String name){
-        SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from "+TABLE_NAME+" where "+NAME+" = ?", new String[]{name});
+//    public Boolean checkUserName(String name){
+//        SQLiteDatabase MyDB = this.getWritableDatabase();
+//        Cursor cursor = MyDB.rawQuery("Select * from "+TABLE_NAME+" where "+NAME+" = ?", new String[]{name});
+//        return cursor.getCount() > 0;
+//
+//    }
+    public Boolean checkUserID(String id){
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from "+TABLE_NAME+" where "+ID+" = ?", new String[]{id});
         return cursor.getCount() > 0;
-
     }
-    public Boolean checkUserNamePassword(String name, String password){
-        SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor = MyDB.rawQuery("Select * from "+TABLE_NAME+" where "+NAME+" = ? and "+PASSWORD+" = ?", new String[]{name, password});
+    public Boolean checkUserIDPassword(String id, String password){
+        SQLiteDatabase MyDB = this.getReadableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from "+TABLE_NAME+" where "+ID+" = ? and "+PASSWORD+" = ?", new String[]{id, password});
         return cursor.getCount() > 0;
     }
-
-    public User getSingleUserInfo(String name){
-
+    public boolean updateData(String id, String name, String dob, String gender, String age, String location,  String bio){
         SQLiteDatabase database = this.getWritableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + NAME + "=?", new String[]{name});
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(NAME,name);
+        contentValues.put(DATE_OF_BIRTH, dob);
+        contentValues.put(GENDER, gender);
+        contentValues.put(AGE, age);
+        contentValues.put(LOCATION, location);
+        contentValues.put(BIO, bio);
+        database.update(TABLE_NAME,contentValues, ID + " = ?",new String[]{id});
+        return true;
+    }
+
+
+    public User getSingleUserInfo(String id){
+
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE " + ID + "=?", new String[]{id});
         cursor.moveToFirst();
         User user = new User();
-        user.setId(cursor.getInt(cursor.getColumnIndex(ID)));
+        user.setId(cursor.getString(cursor.getColumnIndex(ID)));
         user.setName(cursor.getString(cursor.getColumnIndex(NAME)));
         user.setAge(cursor.getInt(cursor.getColumnIndex(AGE)));
         user.setSex(cursor.getString(cursor.getColumnIndex(GENDER)));

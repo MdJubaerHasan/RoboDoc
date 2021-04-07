@@ -44,7 +44,7 @@
             android:textColorHint="@color/dark_blue" />
 
         <TextView
-            android:id="@+id/change_gender"
+            android:id="@+id/txtview"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -54,14 +54,14 @@
             android:textSize="18dp"/>
 
         <RadioGroup
-            android:id="@+id/gender_selector"
+            android:id="@+id/update_gender"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:background="@drawable/input_field">
             <RadioButton
-                android:id="@+id/rb_male"
+                android:id="@+id/update_male"
                 android:layout_width="80dp"
                 android:layout_height="43dp"
                 android:checked="true"
@@ -71,7 +71,7 @@
                 android:textSize="17sp" />
 
             <RadioButton
-                android:id="@+id/rb_female"
+                android:id="@+id/update_female"
                 android:layout_width="80dp"
                 android:layout_height="43dp"
                 android:buttonTint="@color/red"
@@ -149,7 +149,7 @@
         app:layout_constraintVertical_bias="0.047" />
 
     <Button
-        android:id="@+id/savePass"
+        android:id="@+id/updateUserInfo"
         android:layout_width="185dp"
         android:layout_height="62dp"
         android:background="@drawable/button"
