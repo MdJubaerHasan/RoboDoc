@@ -20,6 +20,7 @@ import java.lang.annotation.Target;
 public class UserDashboardActivity extends AppCompatActivity {
     TextView id, name, sex, age, location , bio ;
     Button changeInfo, diagnosisPage, logOut;
+//    ShowLocationRequest showLocationRequest;
     DBHelperUser myDB;
 
     @Override
@@ -36,16 +37,10 @@ public class UserDashboardActivity extends AppCompatActivity {
         bio = (TextView) findViewById(R.id.textViewUserBio);
         logOut = (Button) findViewById(R.id.logout);
         myDB = new DBHelperUser(this);
+//        showLocationRequest = new ShowLocationRequest(this);
+//        showLocationRequest.startLocationUpdate();
         SharedPreferences sharedPreferences = getSharedPreferences("user_details", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-//        String username = getIntent().getStringExtra("NAME");
-        diagnosisPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(UserDashboardActivity.this, MainAppChoiceActivity.class);
-                startActivity(intent);
-            }
-        });
         String userId = sharedPreferences.getString("userIdKey", "");
 
         User user = myDB.getSingleUserInfo(userId);
@@ -58,6 +53,14 @@ public class UserDashboardActivity extends AppCompatActivity {
             sex.setText(String.valueOf(user.getSex()));
             bio.setText(String.valueOf(user.getBio()));
         }
+
+        diagnosisPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDashboardActivity.this, MainAppChoiceActivity.class);
+                startActivity(intent);
+            }
+        });
 
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +79,7 @@ public class UserDashboardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 }

@@ -30,7 +30,7 @@ public class ChangeUserInfoActivity extends AppCompatActivity {
     RadioButton radioButton;
     EditText bio_input, name_input;
     Button save_info;
-    private String name, dob, sex, bio, age, id, password, location;
+    private String name, dob, sex, bio, age, id, location, latitude, longitude;
 
     DatePickerDialog.OnDateSetListener onDateSetListener;
     DBHelperUser myDB;
@@ -104,10 +104,13 @@ public class ChangeUserInfoActivity extends AppCompatActivity {
                      dob = change_dob.getText().toString();
                      bio = bio_input.getText().toString();
                      location = "Dhaka";
-                     if (name.equals("")||sex.equals("")||dob.equals("")||location.equals("")){
+                     latitude = "1234";
+                     longitude = "4567";
+
+                     if (name.equals("")||sex.equals("")||dob.equals("")||location.equals("")||latitude.equals("")||longitude.equals("")){
                          Toast.makeText(ChangeUserInfoActivity.this, "সবগুলো ঘর পূরণ করুন ",Toast.LENGTH_LONG).show();
                      }else {
-                         boolean res = myDB.updateData(id, name, dob, sex, age, location, bio);
+                         boolean res = myDB.updateData(id, name, dob, sex, age, location,latitude,longitude, bio);
                          if (res) {
                              Toast.makeText(getApplicationContext(), "Successfully Updated Data ", Toast.LENGTH_LONG).show();
                              Intent intent = new Intent(getApplicationContext(), UserDashboardActivity.class);

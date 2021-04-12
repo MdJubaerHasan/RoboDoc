@@ -105,7 +105,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         Boolean checkUser = myDB.checkUserID(id);
                         if (!checkUser){
                             id = id + "@_" + user;
-                            Boolean insert = myDB.insertData(id,user, pass, dob, sex, age,"", "" );
+                            Boolean insert = myDB.insertData(id,user, pass, dob, sex, age,"", "" ,"","");
                             if (insert){
                                 Toast.makeText(RegistrationActivity.this, "অ্যাকাউন্ট তইরি হয়েছে  ",Toast.LENGTH_LONG).show();
 //                                Intent login = new Intent(RegistrationActivity.this, LoginActivity.class);
@@ -132,7 +132,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                 id = String.valueOf(id_generator());
                             }
                             id = id + "@_" + user;
-                            Boolean insert = myDB.insertData(id,user, pass, dob, sex, age,"", "" );
+                            Boolean insert = myDB.insertData(id,user, pass, dob, sex, age,"", "" ,"","");
                             if (insert){
                                 Toast.makeText(RegistrationActivity.this, "অ্যাকাউন্ট তইরি হয়েছে  ",Toast.LENGTH_LONG).show();
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);

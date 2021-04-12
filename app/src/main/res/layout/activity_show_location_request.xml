@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShowLocationRequest"
+    android:background="@drawable/locationpermissionbg">
+
+    <TextView
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:maxLines="4"
+        android:text="এই অ্যাপ্লিকেশান পরিপূর্ণ ভাবে চালাতে আপনার অবস্থান জানা অপরিহার্য ।
+আপনার অবস্থান এর তথ্য আমরা অন্য কারো সাথে বিনিময় করি না । অনুগ্রহ পূর্বক অবস্থান তদারকির অনুমতি দিন"
+        android:textSize="18sp"
+        android:textColor="@color/dark_blue"
+        android:fontFamily="@font/regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.669" />
+
+    <Button
+        android:id="@+id/btn_grantPermission"
+        android:layout_width="301dp"
+        android:layout_height="73dp"
+        android:background="@drawable/grantpermissionbtn"
+        android:fontFamily="@font/regular"
+        android:text="অবস্থান তদারকির অনুমতি দিন"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.908" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText u_id, u_pass;
     Button login;
     DBHelperUser myDB;
+    ShowLocationRequest showLocationRequest = new ShowLocationRequest();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +30,12 @@ public class LoginActivity extends AppCompatActivity {
         u_pass = (EditText) findViewById(R.id.password_user);
         login = (Button) findViewById(R.id.login_btn);
         myDB = new DBHelperUser(this);
+
+        SharedPreferences locate_permission = getSharedPreferences("location_permission", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = locate_permission.edit();
+        String choice = locate_permission.getString("userLocationChoice", "");
+        System.out.println(choice);
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,9 +69,14 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Saved Successfully", Toast.LENGTH_LONG).show();
                         editor.apply();
 //                        Toast.makeText(getApplicationContext(), "Thank you laa", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), UserDashboardActivity.class);
-//                        intent.putExtra("NAME", user);
-                        startActivity(intent);
+                        if(choice.equals("granted")){
+                            Intent intent = new Intent(getApplicationContext(), UserDashboardActivity.class);
+                            startActivity(intent);
+                        }else {
+                            Intent intent = new Intent(getApplicationContext(), ShowLocationRequest.class);
+                            startActivity(intent);
+                        }
+
                     }
                     else {
                         Toast.makeText(getApplicationContext(), "আপনার নাম অথবা পাসওয়ার্ড মিলে নাই । সঠিক নাম এবং পাসওয়ার্ড দিন ",Toast.LENGTH_LONG).show();
