@@ -49,16 +49,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(register);
             }
         });
-        SharedPreferences sharedPreferences = getSharedPreferences("user_details", Context.MODE_PRIVATE);
-        if (sharedPreferences.contains("userIdKey") && sharedPreferences.contains("passwordKey")) {
-            String username = sharedPreferences.getString("userIdKey", "");
-            String password = sharedPreferences.getString("passwordKey", "");
-            if (username.equals("") || password.equals("")) {
-                Toast.makeText(getApplicationContext(), "can't auto log in", Toast.LENGTH_LONG).show();
-            } else {
-                Intent intent = new Intent(getApplicationContext(), UserDashboardActivity.class);
+        SharedPreferences location_permission = getSharedPreferences("location_permission", Context.MODE_PRIVATE);
+        if (location_permission.contains("userLocationChoice")){
+            if (location_permission.getString("userLocationChoice", "").equals("granted")){
+                SharedPreferences sharedPreferences = getSharedPreferences("user_details", Context.MODE_PRIVATE);
+                if (sharedPreferences.contains("userIdKey") && sharedPreferences.contains("passwordKey")) {
+                    String username = sharedPreferences.getString("userIdKey", "");
+                    String password = sharedPreferences.getString("passwordKey", "");
+                    if (!username.equals("") && !password.equals("")) {
+                        Intent intent = new Intent(getApplicationContext(), UserDashboardActivity.class);
+                        startActivity(intent);
+                    }
+                }
+            }else {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         }
+
     }
 }

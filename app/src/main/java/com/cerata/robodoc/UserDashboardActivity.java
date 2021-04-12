@@ -2,11 +2,13 @@ package com.cerata.robodoc;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -37,11 +39,11 @@ public class UserDashboardActivity extends AppCompatActivity {
         bio = (TextView) findViewById(R.id.textViewUserBio);
         logOut = (Button) findViewById(R.id.logout);
         myDB = new DBHelperUser(this);
-//        showLocationRequest = new ShowLocationRequest(this);
-//        showLocationRequest.startLocationUpdate();
+
         SharedPreferences sharedPreferences = getSharedPreferences("user_details", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         String userId = sharedPreferences.getString("userIdKey", "");
+
 
         User user = myDB.getSingleUserInfo(userId);
         if (!userId.equals("")){

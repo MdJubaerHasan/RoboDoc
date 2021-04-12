@@ -1,10 +1,15 @@
 package com.cerata.robodoc;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,13 +18,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
     ImageView back_button;
     TextView register;
     EditText u_id, u_pass;
     Button login;
     DBHelperUser myDB;
-    ShowLocationRequest showLocationRequest = new ShowLocationRequest();
+    FusedLocationProviderClient fusedLocationProviderClient;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         u_pass = (EditText) findViewById(R.id.password_user);
         login = (Button) findViewById(R.id.login_btn);
         myDB = new DBHelperUser(this);
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(LoginActivity.this);
 
         SharedPreferences locate_permission = getSharedPreferences("location_permission", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = locate_permission.edit();
@@ -55,7 +69,6 @@ public class LoginActivity extends AppCompatActivity {
                 String id = u_id.getText().toString();
                 String pass = u_pass.getText().toString();
 
-
                 if(id.equals("")||pass.equals("")){
                     Toast.makeText(getApplicationContext(), "সবগুলো ঘর পূরণ করুন ",Toast.LENGTH_LONG).show();
                 }
@@ -68,8 +81,8 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("passwordKey", pass);
                         Toast.makeText(getApplicationContext(), "Saved Successfully", Toast.LENGTH_LONG).show();
                         editor.apply();
-//                        Toast.makeText(getApplicationContext(), "Thank you laa", Toast.LENGTH_LONG).show();
                         if(choice.equals("granted")){
+                            getLastKnownLocation(id);
                             Intent intent = new Intent(getApplicationContext(), UserDashboardActivity.class);
                             startActivity(intent);
                         }else {
@@ -85,4 +98,55 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    // Get LAst Known Location
+    public void getLastKnownLocation(String user_id){
+        @SuppressLint("MissingPermission") Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
+        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location!= null){
+                    // we have a location
+                    getLocationData(user_id, location);
+                }else {
+                    return;
+                }
+            }
+        });
+        locationTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                System.out.println("Error: "+e.getLocalizedMessage());
+            }
+        });
+    }
+
+
+    // insert Data in Database
+
+
+    public void getLocationData(String id , Location location){
+        String latitude = String.valueOf(location.getLatitude());
+        String longitude = String.valueOf(location.getLongitude());
+        Geocoder geocoder = new Geocoder(LoginActivity.this);
+        String address = "";
+        try {
+            List<Address> addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            address = addressList.get(0).getAddressLine(0);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        boolean result = false;
+        if (!address.equals("") && !latitude.equals("") && !longitude.equals("")){
+            result = myDB.updateLocation(id, address, latitude, longitude);
+        }
+        if (result){
+            Intent intent = new Intent(getApplicationContext(), UserDashboardActivity.class);
+            startActivity(intent);
+        }else {
+            Toast.makeText(getApplicationContext(), "Couldn't insert Location", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
 }
