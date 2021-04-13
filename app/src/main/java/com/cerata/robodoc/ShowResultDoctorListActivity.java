@@ -52,20 +52,6 @@ public class ShowResultDoctorListActivity extends AppCompatActivity{
         textView.setText(dis+" রোগের ডাক্তার তালিকা");
 
 
-//        loadDataInListView(dis);
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String name = doctors.get(position).getDoctor_name();
-                Intent intent = new Intent(ShowResultDoctorListActivity.this, ShowDoctorDetailsActivity.class);
-                intent.putExtra("doctor", name);
-                startActivity(intent);
-            }
-        });
-
-
         // Get user id from shared preference
         SharedPreferences sharedPreferences = getSharedPreferences("user_details", Context.MODE_PRIVATE);
         if (sharedPreferences.contains("userIdKey")) {
@@ -100,6 +86,16 @@ public class ShowResultDoctorListActivity extends AppCompatActivity{
             }
         }
         loadDataInListView();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String name = updatedDoctors.get(position).getDoctor_name();
+                Intent intent = new Intent(ShowResultDoctorListActivity.this, ShowDoctorDetailsActivity.class);
+                intent.putExtra("doctor", name);
+                startActivity(intent);
+            }
+        });
     }
 
 
