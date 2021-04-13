@@ -13,10 +13,10 @@
         android:layout_width="359dp"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:padding="5dp"
         android:gravity="center"
         android:layout_marginStart="11dp"
-        android:background="@drawable/flippeddocnamefield">
+        android:background="@drawable/docnamefield">
         <TextView
             android:id="@+id/showDistance"
             android:layout_width="wrap_content"
@@ -24,7 +24,6 @@
             android:text="km"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginStart="5dp"
             android:textSize="12sp"
             android:textColor="@color/white"
             android:fontFamily="@font/bold"/>
@@ -38,7 +37,7 @@
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
