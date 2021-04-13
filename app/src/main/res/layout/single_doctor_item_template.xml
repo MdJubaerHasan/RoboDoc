@@ -9,7 +9,7 @@
     android:paddingTop="16dp">
 
     <LinearLayout
-        android:id="@+id/linear_layoutId"
+        android:id="@+id/linear_layoutId6"
         android:layout_width="359dp"
         android:layout_height="60dp"
         android:orientation="vertical"

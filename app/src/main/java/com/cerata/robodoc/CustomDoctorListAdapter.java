@@ -40,7 +40,7 @@ public class CustomDoctorListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.single_doctor_item_template, null);
-        TextView textViewDoctor = (TextView) convertView.findViewById(R.id.doctor_name_text);
+        TextView textViewDoctor = convertView.findViewById(R.id.doctor_name_text);
         DoctorDisease diseaseDoctor = arrayList.get(position);
         textViewDoctor.setText(diseaseDoctor.getDoctor_name());
         return convertView;

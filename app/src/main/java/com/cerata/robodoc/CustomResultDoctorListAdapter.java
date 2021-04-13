@@ -7,40 +7,42 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 
 public class CustomResultDoctorListAdapter extends BaseAdapter {
     Context context;
-    ArrayList<Doctor> arrayList;
+    ArrayList<DoctorDisease> arrayList;
 
-    public CustomResultDoctorListAdapter(Context context, ArrayList<Doctor> arrayList) {
+    public CustomResultDoctorListAdapter(Context context, ArrayList<DoctorDisease> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return this.arrayList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return arrayList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.single_result_doctor_item, null);
-        TextView textViewDoctor = (TextView) convertView.findViewById(R.id.doctor_name_text);
-        Doctor diseaseDoctor = arrayList.get(position);
-        textViewDoctor.setText(diseaseDoctor.getName());
-        System.out.println(diseaseDoctor.getName());
+        TextView textViewDoctor = convertView.findViewById(R.id.result_doctor_name_text);
+        TextView textViewDistance = convertView.findViewById(R.id.showDistance);
+        DoctorDisease diseaseDoctor = arrayList.get(position);
+        textViewDoctor.setText(diseaseDoctor.getDoctor_name());
+        textViewDistance.setText((int)diseaseDoctor.getDoctor_distance()+ " Km");
         return convertView;
     }
 }

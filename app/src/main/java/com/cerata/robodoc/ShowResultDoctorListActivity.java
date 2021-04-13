@@ -23,7 +23,8 @@ public class ShowResultDoctorListActivity extends AppCompatActivity{
     DBHelperUser myDB;
     TextView textView;
     ListView listView;
-    CustomDoctorListAdapter customDoctorListAdapter;
+//    CustomDoctorListAdapter customDoctorListAdapter;
+    CustomResultDoctorListAdapter customResultDoctorListAdapter;
     ArrayList<DoctorDisease> doctors, updatedDoctors;
     ArrayList<Doctor>doctorsDistance;
     String userId, latitudeUser, longitudeUser, latitudeDoctor, longitudeDoctor, nameDoctor;
@@ -78,7 +79,7 @@ public class ShowResultDoctorListActivity extends AppCompatActivity{
                 }
                 Collections.sort(doctorsDistance);
                 for(Doctor item: doctorsDistance){
-                    DoctorDisease doctorDisease = new DoctorDisease(item.getName(),dis);
+                    DoctorDisease doctorDisease = new DoctorDisease(item.getName(),dis,item.getDistance());
                     updatedDoctors.add(doctorDisease);
                 }
 
@@ -101,9 +102,9 @@ public class ShowResultDoctorListActivity extends AppCompatActivity{
 
     public void loadDataInListView(){
 
-        customDoctorListAdapter = new CustomDoctorListAdapter(this,updatedDoctors);
-        listView.setAdapter(customDoctorListAdapter);
-        customDoctorListAdapter.notifyDataSetChanged();
+        customResultDoctorListAdapter = new CustomResultDoctorListAdapter(this,updatedDoctors);
+        listView.setAdapter(customResultDoctorListAdapter);
+        customResultDoctorListAdapter.notifyDataSetChanged();
     }
 
 
