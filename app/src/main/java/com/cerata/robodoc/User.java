@@ -5,9 +5,18 @@ public class User {
     private String name;
     private int age;
     private String sex;
+    private String dob;
     private String location;
     private String latitude;
     private String longitude;
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
 
     public String getLatitude() {
         return latitude;

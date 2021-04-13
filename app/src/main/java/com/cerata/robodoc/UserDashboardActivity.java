@@ -22,7 +22,6 @@ import java.lang.annotation.Target;
 public class UserDashboardActivity extends AppCompatActivity {
     TextView id, name, sex, age, location , bio ;
     Button changeInfo, diagnosisPage, logOut;
-//    ShowLocationRequest showLocationRequest;
     DBHelperUser myDB;
 
     @Override

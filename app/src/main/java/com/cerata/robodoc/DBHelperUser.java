@@ -99,6 +99,7 @@ public class DBHelperUser extends SQLiteOpenHelper {
         User user = new User();
         user.setId(cursor.getString(cursor.getColumnIndex(ID)));
         user.setName(cursor.getString(cursor.getColumnIndex(NAME)));
+        user.setDob(cursor.getString(cursor.getColumnIndex(DATE_OF_BIRTH)));
         user.setAge(cursor.getInt(cursor.getColumnIndex(AGE)));
         user.setSex(cursor.getString(cursor.getColumnIndex(GENDER)));
         user.setLocation(cursor.getString(cursor.getColumnIndex(ADDRESS)));

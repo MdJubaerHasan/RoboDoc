@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ChangeUserInfoActivity"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="@color/white">
 
 
     <ImageView
@@ -39,6 +40,7 @@
             android:layout_height="43dp"
             android:background="@drawable/input_field"
             android:hint="আপনার ইউজারনেম"
+            android:textColor="@color/dark_blue"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textColorHint="@color/dark_blue" />
@@ -64,7 +66,6 @@
                 android:id="@+id/update_male"
                 android:layout_width="80dp"
                 android:layout_height="43dp"
-                android:checked="true"
                 android:text="পুরুষ"
                 android:buttonTint="@color/red"
                 android:textColor="@color/dark_blue"
@@ -87,6 +88,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/input_field"
             android:hint="আপনার জন্ম তারিখ"
+            android:textColor="@color/dark_blue"
             android:gravity="center"
             android:textAlignment="center"
             android:textColorHint="@color/dark_blue"
@@ -139,6 +141,7 @@
         android:layout_height="100dp"
         android:background="@drawable/biofield"
         android:ems="10"
+        android:textColor="@color/dark_blue"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
