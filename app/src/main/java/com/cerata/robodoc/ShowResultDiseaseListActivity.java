@@ -42,6 +42,9 @@ public class ShowResultDiseaseListActivity extends AppCompatActivity {
         Set<String> set = new HashSet<>(updatedArrayList);
         updatedArrayList.clear();
         updatedArrayList.addAll(set);
+
+        // Sorting array list
+
         String[] array = updatedArrayList.toArray(new String[0]);
         Arrays.sort(array, new Comparator<String>() {
             @Override

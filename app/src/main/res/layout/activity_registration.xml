@@ -99,6 +99,7 @@
         android:hint="পুনরায় পাসওয়ার্ড"
         android:inputType="textPassword"
         android:textAlignment="center"
+        android:textColor="@color/dark_blue"
         android:textColorHint="@color/dark_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
