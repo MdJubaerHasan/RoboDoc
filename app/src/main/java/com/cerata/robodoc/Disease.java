@@ -49,6 +49,7 @@ public class Disease implements Comparable{
         this.percentage = percentage;
     }
 
+    // For Comparing
     @Override
     public int compareTo(Object o) {
         short comparePercentage = ((Disease)o).getPercentage();
