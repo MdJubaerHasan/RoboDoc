@@ -78,13 +78,17 @@ public class DBHelperSymptoms extends SQLiteOpenHelper {
         insertData(db,"ঘন ঘন প্রস্রাব হওয়া");
         insertData(db,"প্রস্রাবের সময় জ্বালাপোড়া");
     }
-    public ArrayList<String> getAllSymptoms(){
-        ArrayList<String> arrayList= new ArrayList<>();
+    public ArrayList<Symptom> getAllSymptoms(){
+        ArrayList<Symptom> arrayList= new ArrayList<>();
         SQLiteDatabase database = this.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT " + SYMPTOM + " FROM " + TABLE_NAME, null);
+        Cursor cursor = database.rawQuery("SELECT * FROM " + TABLE_NAME, null);
         if(cursor.moveToFirst()){
             do {
-                arrayList.add(cursor.getString(0));
+                Symptom symptom = new Symptom();
+                symptom.setId(cursor.getInt(cursor.getColumnIndex(ID)));
+                symptom.setSymptomName(cursor.getString(cursor.getColumnIndex(SYMPTOM)));
+                symptom.setIsChecked(false);
+                arrayList.add(symptom);
             }while (cursor.moveToNext());
         }
         return arrayList;

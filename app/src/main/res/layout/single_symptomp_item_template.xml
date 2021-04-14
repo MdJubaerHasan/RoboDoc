@@ -2,19 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <CheckBox
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:id="@+id/single_symptom"
+    android:orientation="vertical"
+    android:gravity="center|top">
+    <LinearLayout
+        android:id="@+id/listOfSymptomsLinear"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:checked="false"
-        android:button="@drawable/image_checkbox"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:paddingStart="12dp"
-        android:text="text"
-        android:textColor="@color/white"
-        android:fontFamily="@font/bold"/>
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <CheckBox
+            android:id="@+id/checkboxID"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:button="@drawable/image_checkbox"
+            android:focusable="false"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/single_symptom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Symptom1"
+            android:layout_gravity="center"
+            android:gravity="left"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/regular"
+            android:textSize="18sp"
+            android:layout_marginStart="10dp"/>
+
+    </LinearLayout>
+
 </LinearLayout>

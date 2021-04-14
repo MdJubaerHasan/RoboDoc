@@ -2,6 +2,7 @@ package com.cerata.robodoc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +14,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SelectSymptomsActivity extends AppCompatActivity {
+    Context context;
     DBHelperSymptoms dbHelperSymptoms;
-    ArrayList<String> arrayList;
+    ArrayList<Symptom> arrayList;
     ListView listView;
     CustomSymptomAdapter customSymptomAdapter;
     Button btn_find_diease;
@@ -27,7 +29,11 @@ public class SelectSymptomsActivity extends AppCompatActivity {
         btn_find_diease = (Button) findViewById(R.id.btn_find_disease);
         dbHelperSymptoms = new DBHelperSymptoms(this);
         dbHelperSymptoms.insert();
+
+
         loadDataInListView();
+
+
         btn_find_diease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

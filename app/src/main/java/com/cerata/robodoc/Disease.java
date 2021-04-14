@@ -1,6 +1,6 @@
 package com.cerata.robodoc;
 
-public class Disease {
+public class Disease implements Comparable{
     private String name;
     private String symptom;
     private int numberOfSymptoms;
@@ -49,4 +49,9 @@ public class Disease {
         this.percentage = percentage;
     }
 
+    @Override
+    public int compareTo(Object o) {
+        short comparePercentage = ((Disease)o).getPercentage();
+        return (int)(comparePercentage-this.percentage);
+    }
 }

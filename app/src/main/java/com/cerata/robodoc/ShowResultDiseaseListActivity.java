@@ -75,15 +75,8 @@ public class ShowResultDiseaseListActivity extends AppCompatActivity {
                 }
             }
         }
+        Collections.sort(resultDiseaseList);
         loadDataInListView();
-//        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
-//            @Override
-//            public void handleOnBackPressed() {
-//                Intent intent1 = new Intent(getApplicationContext(), SelectSymptomsActivity.class);
-//                startActivity(intent1);
-//            }
-//        };
-
     }
 
     public void loadDataInListView(){
