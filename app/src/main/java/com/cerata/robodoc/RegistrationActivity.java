@@ -164,4 +164,9 @@ public class RegistrationActivity extends AppCompatActivity {
         return random.nextInt(999)+(10*(200/78));
 
     }
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(intent);
+    }
 }

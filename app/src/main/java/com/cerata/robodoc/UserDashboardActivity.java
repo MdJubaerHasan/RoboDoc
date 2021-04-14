@@ -81,6 +81,9 @@ public class UserDashboardActivity extends AppCompatActivity {
             }
         });
 
-
+    }
+    @Override
+    public void onBackPressed(){
+        finishAffinity();
     }
 }
