@@ -18,12 +18,12 @@
         android:divider="@color/dark_blue"/>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_find_disease"
-        android:layout_width="150dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:background="@drawable/button"
-        android:text="ডাক্তার খুঁজুন"
+        android:text="রোগ সনাক্ত করুন "
         android:fontFamily="@font/regular"
         android:textColor="@color/white"
         android:textSize="20sp"/>
